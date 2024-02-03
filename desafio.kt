@@ -16,6 +16,20 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) 
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    val usuario1 = Usuario("João")
+    val usuario2 = Usuario("Maria", StatusUsuario.INATIVO)
+
+    val conteudo1 = ConteudoEducacional("Introdução ao Kotlin", 45, TipoConteudo.VIDEO)
+    val conteudo2 = ConteudoEducacional("Programação Funcional", 60, TipoConteudo.ARTIGO)
+
+    val formacao1 = Formacao("Desenvolvimento Android")
+    formacao1.matricular(usuario1)
+    formacao1.matricular(usuario2)
+    formacao1.adicionarConteudo(conteudo1)
+    formacao1.adicionarConteudo(conteudo2)
+
+    println("Usuários matriculados na formação: ${formacao1.inscritos}")
+    println("Conteúdos da formação: ${formacao1.conteudos}")
+        formacao1.removerConteudo(conteudo1)
+    usuario1.status = StatusUsuario.INATIVO
 }
